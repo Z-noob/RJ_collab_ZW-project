@@ -1,32 +1,35 @@
 export const setupPageBasics = (parentEl) => {
     parentEl.innerHTML = `
-
     <header>
         <h1>Element Compare</h1>
     </header>
-    <div class="top-section">
-        <h3>Choose Two:</h3>
-        <div class="images"></div>
-    </div>
-    <div class="bottom-section">
-        <div class="column">
-            <div
-        </div>
-    </div>
+    <section class="top-section">
+        <h2>Choose Two:</h2>
+        <ul class="images"></ul>
+    </section>
+    <section class="bottom-section">
+        <div class="column" id="left"></div>
+        <div class="column" id="right"></div>
+    </section>
     `;
 
-    const statusDiv = parentEl.querySelector('#status');
-    const usersUl = parentEl.querySelector('#users-list');
-    const postsUl = parentEl.querySelector('#posts-list');
-    const newUserForm = parentEl.querySelector('#new-user-form');
-    const newUserDiv = parentEl.querySelector('#new-user');
-
-    return { statusDiv, usersUl, postsUl, newUserForm, newUserDiv };
+    const topSection = parentEl.querySelector('.top-section');
+    const bottomSection = parentEl.querySelector('.bottom-section');
+    const iconList = topSection.querySelector("ul")
+    const columnLeft = bottomSection.querySelector('#left')
+    const columnRight = bottomSection.querySelector('#right')
+    return { topSection, bottomSection, columnLeft, columnRight, iconList};
 }
 export const renderTypes = (typesDiv, arr) => {
     let htmlContent = ''
     for (const type of arr){
-        htmlContent.innerHTML += `<img src="${type.icon}" alt="Element Icon">`;
+        htmlContent += `
+        <li>
+            <img src="${type.icon}" alt="Element Icon"></img>
+        </li>`
     }
     typesDiv.innerHTML = htmlContent;
 }
+
+
+// export const renderTypeInfo = ()
