@@ -42,3 +42,62 @@ export const getTypes = async () => {
   };
 };
 getTypes();
+
+export let notAPromise = {}
+
+export const gen4Poke  = async(ElemPlacehold) => {
+  try{
+    const response = await fetch(`https://pokeapi.co/api/v2/type/water/`);
+    if (!response.ok) throw new Error (`Failed to get Pokemon sprites`);
+    const data = await response.json();
+    const pokes = data.pokemon
+    const randomIndex = Math.floor(Math.random()*(pokes.length-4))
+    const random4Array = pokes.slice(randomIndex, randomIndex + 4)
+    
+    const names = []
+    const pokeUrl = []
+    for (let i = 0; i < random4Array.length; i++) {
+      names.push(random4Array[i].pokemon.name)
+      pokeUrl.push(random4Array[i].pokemon.url)
+    }
+    
+    let pokeLinkIds = []
+    for(let i = 0; i < pokeUrl.length; i++){
+      const link = pokeUrl[i].slice(34, pokeUrl[i].length -1)
+      pokeLinkIds.push(link)
+    }
+
+    const pokeData = {
+      names: names,
+      pokeUrl: pokeLinkIds
+    }
+
+    notAPromise = pokeData
+    return pokeData
+    // console.log(`https://pokeapi.co/api/v2/pokemon/116/`.length)
+    // console.log(names, pokeUrl)
+    // const urltest = []
+    // const urls = pokeUrl.map(async (elem) => {
+    //   const res = await fetch(elem);
+    //   const data = await res.json();
+    //   const some = await data.sprites.other["official-artwork"].front_default
+    //   urltest.push(some)
+    //   console.log(some)
+    //   pokeData.pokeUrl.push(some)
+    
+      // return some
+      // return data.other.official-artwork.front_default .other
+   
+    // console.log(urls, "84")
+    // const links = urls.map((el) => el.result)
+    // pokeData.pokeUrl = links
+
+    // console.log( pokeData)
+
+  } catch (error) {
+    console.warn(error);
+    return null;
+  }
+}
+// gen4Poke('water')
+// https://pokeapi.co/api/v2/type/${ElemPlacehold}/

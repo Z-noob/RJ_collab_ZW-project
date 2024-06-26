@@ -2,10 +2,13 @@ import './style.css'
 import {
   getTypes,
   // getType,
+  gen4Poke
 } from './fetch-functions.js';
 import {
   renderTypes,
-  // renderType
+  // renderType,
+  renderPokesImg,
+  viewButton
 } from './render-functions.js';
 import app from './app'
 
