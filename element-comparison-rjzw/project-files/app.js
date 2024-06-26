@@ -12,7 +12,7 @@ import {
   } from './fetch-functions.js';
 
   export default async function app(appDiv) {
-    const { topSection, bottomSection, columnLeft, columnRight, iconList} = 
+    const { topSection, bottomSection, columnLeft, columnRight, iconList, pokePics} = 
     setupPageBasics(appDiv)
     const elemPlaceHolder = [];
 
@@ -20,8 +20,8 @@ import {
       const viewButton = e.target
       if(viewButton.tagName === 'BUTTON' && viewButton.id === 'view') {
         if (columnLeft.contains(viewButton)) {
-        gen4Poke(elemPlaceHolder).then((obj) => renderPokesImg(columnLeft, obj)) 
-       } else { gen4Poke(elemPlaceHolder).then((obj) => renderPokesImg(columnRight, obj))}
+        gen4Poke(elemPlaceHolder).then((obj) => renderPokesImg(pokePics, obj)) 
+       } else { gen4Poke(elemPlaceHolder).then((obj) => renderPokesImg(pokePics, obj))}
       }
     })
 
