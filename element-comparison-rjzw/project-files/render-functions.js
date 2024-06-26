@@ -35,6 +35,9 @@ export const renderTypes = (typesDiv, arr) => {
 
 export const renderPokesImg = (pokeDiv, obj) => {
 
+    const divElem = document.createElement("div")
+    divElem.innerHTML = "";
+
     let index = 0
 
         console.log("Data:", obj)
@@ -52,12 +55,15 @@ export const renderPokesImg = (pokeDiv, obj) => {
         index +=1
 
         buttonElem.append(imgElem)
-        pokeDiv.append(buttonElem)
+        divElem.append(buttonElem)
         })
+
+        pokeDiv.append(divElem)
 };
 
 // Render type damage relations on icon click
 export const renderTypeInfo = (relationsDiv, obj, str) => {
+    relationsDiv.innerHTML = "";
     let doubleDamFromStr = '', doubleDamToStr = '', halfDamToStr = '', halfDamFromStr = '';
     for(const key in obj){
         if (key === "doubleDamTo"){
@@ -79,7 +85,7 @@ export const renderTypeInfo = (relationsDiv, obj, str) => {
     <p>Incoming Damage - </p>
     <p>Effective: ${p3}</p>
     <p>Ineffective: ${p4}</p>
-    <button> View Pokemon </button>
+    <button id="view"> View Pokemon </button>
     `;
 };
 

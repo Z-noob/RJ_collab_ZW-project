@@ -7,40 +7,43 @@ import {
   } from './render-functions.js';
   import {
     getTypes,
-    getType,
+    getTypeInfo,
     gen4Poke,
   } from './fetch-functions.js';
 
   export default async function app(appDiv) {
     const { topSection, bottomSection, columnLeft, columnRight, iconList} = 
     setupPageBasics(appDiv)
+    const elemPlaceHolder = [];
 
-    // pokeDiv(statusDiv)
-    gen4Poke("water").then((obj) => renderPokesImg(statusDiv, obj))
+    bottomSection.addEventListener("click", (e) => {
+      const viewButton = e.target
+      if(viewButton.tagName === 'BUTTON' && viewButton.id === 'view') {
+        if (columnLeft.contains(viewButton)) {
+        gen4Poke(elemPlaceHolder).then((obj) => renderPokesImg(columnLeft, obj)) 
+       } else { gen4Poke(elemPlaceHolder).then((obj) => renderPokesImg(columnRight, obj))}
+      }
+    })
 
-    // const genActive = parentEl.querySelector('#view')
-    // genActive.addEventListener("click", (e) => {
-    //   const viewButton = e.target
-    //   if(imgButton.tagName === 'BUTTON' && imgButton.id === 'view') {
-    //     gen4Poke().then((obj) => renderPokesImg(statusDiv, obj))
-    //   }
-    // })
+    bottomSection.addEventListener("click", (e) => {
+      const imgButton = e.target
+      if(imgButton.tagName === 'IMG' & imgButton.id !== 'view') {
+        const button = imgButton.parentNode
+        const poke = button.id
+        poke[0].toUpperCase()
+        const urlToOpen = `https://bulbapedia.bulbagarden.net/wiki/${poke}_(Pokémon)`;
+        // https://bulbapedia.bulbagarden.net/wiki/Charmander_(Pokémon)
+        window.open(urlToOpen, '_blank');
+      }
+    })
 
-    // statusDiv.addEventListener("click", (e) => {
-    //   const imgButton = e.target
-    //   if(imgButton.tagName === 'BUTTON') {
-    //     const poke = imgButton.id
-    //     poke[0].toUpperCase()
-    //     const urlToOpen = `https://bulbapedia.bulbagarden.net/wiki/${poke}_(Pokémon)`;
-    //     // https://bulbapedia.bulbagarden.net/wiki/Charmander_(Pokémon)
-    //     window.open(urlToOpen, '_blank');
-    //   }
-    // })
     getTypes().then((arr) => renderTypes(iconList, arr))
     iconList.addEventListener("click", (e) => {
       e.preventDefault();
       const button = e.target
       const name = button.dataset.iconName;
+      elemPlaceHolder.pop()
+      elemPlaceHolder.push(`${name}`)
       getTypeInfo(name).then((relations) => renderTypeInfo(columnLeft,relations,(name.toUpperCase())));
     });
   };
