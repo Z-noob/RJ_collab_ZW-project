@@ -12,7 +12,7 @@ import {
   } from './fetch-functions.js';
 
   export default async function app(appDiv) {
-    const { statusDiv, usersUl, postsUl, newUserForm, newUserDiv } = 
+    const { topSection, bottomSection, columnLeft, columnRight, iconList} = 
     setupPageBasics(appDiv)
 
     // pokeDiv(statusDiv)
