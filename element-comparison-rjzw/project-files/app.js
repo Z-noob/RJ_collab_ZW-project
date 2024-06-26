@@ -1,14 +1,14 @@
 import {
-    // renderTypes,
-    // renderType,
+
+    renderTypes,
+    renderTypeInfo,
     renderPokesImg,
-    viewButton,
     setupPageBasics
   } from './render-functions.js';
   import {
-    // getTypes,
-    // getType,
-    gen4Poke
+    getTypes,
+    getType,
+    gen4Poke,
   } from './fetch-functions.js';
 
   export default async function app(appDiv) {
@@ -36,5 +36,11 @@ import {
     //     window.open(urlToOpen, '_blank');
     //   }
     // })
-
+    getTypes().then((arr) => renderTypes(iconList, arr))
+    iconList.addEventListener("click", (e) => {
+      e.preventDefault();
+      const button = e.target
+      const name = button.dataset.iconName;
+      getTypeInfo(name).then((relations) => renderTypeInfo(columnLeft,relations,(name.toUpperCase())));
+    });
   };
