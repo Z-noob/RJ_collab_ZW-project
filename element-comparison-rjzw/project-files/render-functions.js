@@ -33,6 +33,29 @@ export const renderTypes = (typesDiv, arr) => {
     typesDiv.innerHTML = htmlContent;
 }
 
+export const renderPokesImg = (pokeDiv, obj) => {
+
+    let index = 0
+
+        console.log("Data:", obj)
+        obj.pokeUrl.forEach((id)=> {
+        const buttonElem = document.createElement("button")
+        const imgElem = document.createElement("img")
+        
+        imgElem.src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`;
+        buttonElem.setAttribute("type", "button");
+        buttonElem.setAttribute("target", "_blank");
+        buttonElem.id = `${obj.names[index]}`
+        console.log(imgElem.src)
+        console.log(obj.names[index])
+
+        index +=1
+
+        buttonElem.append(imgElem)
+        pokeDiv.append(buttonElem)
+        })
+};
+
 // Render type damage relations on icon click
 export const renderTypeInfo = (relationsDiv, obj, str) => {
     let doubleDamFromStr = '', doubleDamToStr = '', halfDamToStr = '', halfDamFromStr = '';
@@ -59,3 +82,4 @@ export const renderTypeInfo = (relationsDiv, obj, str) => {
     <button> View Pokemon </button>
     `;
 };
+
