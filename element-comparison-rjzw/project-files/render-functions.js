@@ -8,17 +8,24 @@ export const setupPageBasics = (parentEl) => {
         <ul class="images"></ul>
     </section>
     <section class="bottom-section">
-        <div class="column" id="left"></div>
-        <div class="column" id="right"></div>
+        <div class="column">
+            <div id="leftRelations"></div>
+            <div class="pokePics"></div>
+        </div> 
+        <div class="column">
+            <div id="rightRelations"></div>
+            <div class="pokePics" ></div>
+        </div>
     </section>
     `;
 
     const topSection = parentEl.querySelector('.top-section');
     const bottomSection = parentEl.querySelector('.bottom-section');
     const iconList = topSection.querySelector("ul")
-    const columnLeft = bottomSection.querySelector('#left')
-    const columnRight = bottomSection.querySelector('#right')
-    return { topSection, bottomSection, columnLeft, columnRight, iconList};
+    const columnLeft = bottomSection.querySelector('#leftRelations')
+    const columnRight = bottomSection.querySelector('#rightRelations')
+    const pokePics = bottomSection.querySelector('.pokePics')
+    return { topSection, bottomSection, columnLeft, columnRight, iconList, pokePics};
 }
 
 // Render icons on page load
@@ -34,7 +41,7 @@ export const renderTypes = (typesDiv, arr) => {
 }
 
 export const renderPokesImg = (pokeDiv, obj) => {
-
+    pokeDiv.innerHTML = '';
     const divElem = document.createElement("div")
     divElem.innerHTML = "";
 
@@ -80,10 +87,10 @@ export const renderTypeInfo = (relationsDiv, obj, str) => {
     relationsDiv.innerHTML = `
     <p>${str}</p>
     <p>Outgoing Damage -</p>
-    <p>Effective: ${p1}</p>
+    <p>Super Effective: ${p1}</p>
     <p>Ineffective: ${p2}</p>
     <p>Incoming Damage - </p>
-    <p>Effective: ${p3}</p>
+    <p>Super Effective: ${p3}</p>
     <p>Ineffective: ${p4}</p>
     <button id="view"> View Pokemon </button>
     `;
