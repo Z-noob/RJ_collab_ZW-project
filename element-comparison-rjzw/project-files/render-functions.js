@@ -38,11 +38,9 @@ import {
   getTypes,
   // getType,
   gen4Poke,
-  notAPromise
 } from './fetch-functions.js';
 
 console.log(gen4Poke('water'))
-console.log(notAPromise)
 
 export const viewButton = (pokeDiv) => {
     const viewElem = document.createElement("button")
@@ -53,13 +51,6 @@ export const viewButton = (pokeDiv) => {
 }
 
 export const renderPokesImg = (pokeDiv, obj) => {
-    // const test = `<button id="close-image"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/65.png"></button>`
-    // pokeDiv.innerHTML = `
-    //     <button id="close-image"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/65.png"></button>
-    // `
-
-    // pokeDiv.innerHTML = test
-    // console.log("pokeDiv:", pokeDiv.innerHTML);
 
     let index = 0
 
@@ -67,7 +58,6 @@ export const renderPokesImg = (pokeDiv, obj) => {
         obj.pokeUrl.forEach((id)=> {
         const buttonElem = document.createElement("button")
         const imgElem = document.createElement("img")
-        // const inputElem = document.createElement("input")
         
         imgElem.src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`;
         buttonElem.setAttribute("type", "button");
@@ -84,12 +74,7 @@ export const renderPokesImg = (pokeDiv, obj) => {
 };
 
 
-// const pokeDiv = document.querySelector('#app');
-// const newUserEl = html.createElement('div');
-// newUserEl.id = 'new-user';
-// html.append(newUserEl);
-// const pokeDiv = appDiv.querySelector('#new-user');
-// gen4Poke().then((obj) => renderPokesImg(pokeDiv, obj))
+
 
 
 

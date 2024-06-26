@@ -16,7 +16,7 @@ import {
     setupPageBasics(appDiv)
 
     // pokeDiv(statusDiv)
-    gen4Poke().then((obj) => renderPokesImg(statusDiv, obj))
+    gen4Poke("water").then((obj) => renderPokesImg(statusDiv, obj))
 
     // const genActive = parentEl.querySelector('#view')
     // genActive.addEventListener("click", (e) => {
