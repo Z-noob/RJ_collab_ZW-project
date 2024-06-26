@@ -7,7 +7,7 @@ import {
   } from './render-functions.js';
   import {
     getTypes,
-    getTypeInfo,
+    getType,
     gen4Poke,
   } from './fetch-functions.js';
 
