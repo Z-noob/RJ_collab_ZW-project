@@ -5,7 +5,7 @@ import {
 } from './fetch-functions.js';
 import {
   renderTypes,
-  // renderTypeInfo
+  renderTypeInfo
 } from './render-functions.js';
 import app from './app'
 

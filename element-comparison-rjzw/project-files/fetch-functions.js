@@ -43,9 +43,9 @@ export const getTypes = async () => {
 };
 // getTypes();
 
-export const getTypeInfo = async (obj) => {
+export const getTypeInfo = async (str) => {
   try {
-    const response = await fetch(`https://pokeapi.co/api/v2/type/${obj.name}/`);
+    const response = await fetch(`https://pokeapi.co/api/v2/type/${str}/`);
     if (!response.ok) throw new Error (`Failed to get types`);
     const data = await response.json();
     const damageData = data.damage_relations;
@@ -64,15 +64,11 @@ export const getTypeInfo = async (obj) => {
       halfDamTo.push(damageData.half_damage_to[i].name)
     }
     damageObj = { doubleDamFrom, doubleDamTo, halfDamFrom, halfDamTo }
-    console.log(damageObj)
+    return damageObj;
 
   } catch(error) {
     console.warn(error);
     return null
   }
 }
-const newObj = {
-  name : "fire" ,
-  icon : "img"
-}
-getTypeInfo(newObj);
+getTypeInfo("fire");
