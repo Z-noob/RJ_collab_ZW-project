@@ -41,4 +41,34 @@ export const getTypes = async () => {
     return null;
   };
 };
-getTypes();
+// getTypes();
+
+export const getTypeInfo = async (str) => {
+  try {
+    const response = await fetch(`https://pokeapi.co/api/v2/type/${str}/`);
+    if (!response.ok) throw new Error (`Failed to get types`);
+    const data = await response.json();
+    const damageData = data.damage_relations;
+    let damageObj = {};
+    let [doubleDamFrom, doubleDamTo, halfDamFrom, halfDamTo] = [[], [], [], []];
+    for(let i = 0; i < damageData.double_damage_from.length; i++) {
+      doubleDamFrom.push(damageData.double_damage_from[i].name)
+    }
+    for(let i = 0; i < damageData.double_damage_to.length; i++) {
+      doubleDamTo.push(damageData.double_damage_to[i].name)
+    }
+    for(let i = 0; i < damageData.half_damage_from.length; i++) {
+      halfDamFrom.push(damageData.half_damage_from[i].name)
+    }
+    for(let i = 0; i < damageData.half_damage_to.length; i++) {
+      halfDamTo.push(damageData.half_damage_to[i].name)
+    }
+    damageObj = { doubleDamFrom, doubleDamTo, halfDamFrom, halfDamTo }
+    return damageObj;
+
+  } catch(error) {
+    console.warn(error);
+    return null
+  }
+}
+getTypeInfo("fire");

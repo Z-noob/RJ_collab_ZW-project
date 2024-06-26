@@ -1,15 +1,13 @@
 import './style.css'
 import {
   getTypes,
-  // getType,
+  getTypeInfo,
 } from './fetch-functions.js';
 import {
   renderTypes,
-  // renderType
+  renderTypeInfo
 } from './render-functions.js';
 import app from './app'
 
 const appDiv = document.querySelector('#app');
 app(appDiv);
-
-// getTypes();
