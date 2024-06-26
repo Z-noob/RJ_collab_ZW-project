@@ -79,7 +79,7 @@ export const gen4Poke  = async(ElemPlacehold) => {
   }
 }
 
-=======
+
 // getTypes();
 
 export const getTypeInfo = async (str) => {

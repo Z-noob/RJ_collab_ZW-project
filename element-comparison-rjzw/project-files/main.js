@@ -9,7 +9,6 @@ import {
     getType,
     gen4Poke,
   } from './fetch-functions.js';
-};
 import app from './app'
 
 const appDiv = document.querySelector('#app');
