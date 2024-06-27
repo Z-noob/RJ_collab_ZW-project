@@ -5,8 +5,10 @@ export const setupPageBasics = (parentEl) => {
     </header>
     <section class="top-section">
         <h2>Choose Two:</h2>
-        <form id="dynamic-form"></form>
-        <button type="submit" id="submit-button">Lets Battle!</button>
+        <form id="dynamic-form">
+            <input type="hidden" required>
+            <button type="submit" id="submit-button">Lets Battle!</button>
+        </form>
     </section>
     <section class="bottom-section">
         <div class="column">
