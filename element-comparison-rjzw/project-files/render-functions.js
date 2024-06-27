@@ -5,27 +5,31 @@ export const setupPageBasics = (parentEl) => {
     </header>
     <section class="top-section">
         <h2>Choose Two:</h2>
-        <ul class="images"></ul>
     </section>
     <section class="bottom-section">
         <div class="column">
+            <ul class="leftImages"></ul>
             <div id="leftRelations"></div>
-            <div class="pokePics"></div>
+            <div class="leftPokePics"></div>
         </div> 
+
         <div class="column">
+            <ul class="rightImages"></ul>
             <div id="rightRelations"></div>
-            <div class="pokePics" ></div>
-        </div>
-    </section>
+            <div class="rightPokePics" ></div>
+            </div>
+        </section>
+        <button type="submit" id="submit-button">Lets Battle!</button>
     `;
 
-    const topSection = parentEl.querySelector('.top-section');
     const bottomSection = parentEl.querySelector('.bottom-section');
-    const iconList = topSection.querySelector("ul")
+    const leftIconList = bottomSection.querySelector("ul.leftImages");
+    const rightIconList = bottomSection.querySelector("ul.rightImages")
     const columnLeft = bottomSection.querySelector('#leftRelations')
     const columnRight = bottomSection.querySelector('#rightRelations')
-    const pokePics = bottomSection.querySelector('.pokePics')
-    return { topSection, bottomSection, columnLeft, columnRight, iconList, pokePics};
+    const leftPokePics = bottomSection.querySelector('.leftPokePics')
+    const rightPokePics = bottomSection.querySelector('.rightPokePics')
+    return { columnLeft, columnRight, rightIconList, leftIconList, rightPokePics,leftPokePics};
 }
 
 // Render icons on page load
@@ -34,7 +38,7 @@ export const renderTypes = (typesDiv, arr) => {
     for (const type of arr){
         htmlContent += `
         <li>
-            <img data-icon-name="${type.name}" src="${type.icon}" alt="Element Icon"></img>
+            <img id="iconsList" data-icon-name="${type.name}" src="${type.icon}" alt="Element Icon"></img>
         </li>`
     }
     typesDiv.innerHTML = htmlContent;
@@ -85,6 +89,7 @@ export const renderTypeInfo = (relationsDiv, obj, str) => {
     };
     const p1 = doubleDamToStr, p2 = halfDamToStr, p3 = doubleDamFromStr, p4 = halfDamFromStr;
     relationsDiv.innerHTML = `
+    <img src="${obj.icon}" alt="${str} icon"></img>
     <p>${str}</p>
     <p>Outgoing Damage -</p>
     <p>Super Effective: ${p1}</p>

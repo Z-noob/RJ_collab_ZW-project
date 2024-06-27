@@ -1,50 +1,50 @@
 * {
     list-style-type: none;
+    box-sizing: border-box;
 }
 body {
+    
     font-family: Arial, sans-serif;
+    overflow-x: hidden;
     margin: 0;
     padding: 0;
 }
-.header{
+header {
     text-align: center;
     padding: 20px;
-    background-color: #f0f0f0;
+    background-color: #717171;
 }
 .top-section {
     text-align: center;
     padding: 20px;
 }
-.top-section .images {
-    display: flex;
+.bottom-section ul {
+    /* box-sizing: border; */
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(3, auto);
     justify-content: center;
     gap: 10px;
 }
-.top-section .images img {
-    width: 100px;
-    height: 100px;
+.top-section .leftImages img {
+    width: 10px;
+    height: 10px;
 }
 .bottom-section {
+    margin: 2;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     padding: 20px;
 }
 .bottom-section .column {
+    margin: 0;
+    padding: 0;
     width: 30%;
     text-align: center;
 }
 .bottom-section .column img {
     width: 100px;
     height: 100px;
-}
-.bottom-section .column .button {
-    display: block;
-    margin: 20px auto;
-    padding: 10px 20px;
-    background-color: #007BFF;
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
 }
 .bottom-section .column .scrollable {
     height: 100px;
