@@ -5,6 +5,7 @@ export const setupPageBasics = (parentEl) => {
     </header>
     <section class="top-section">
         <h2>Choose Two:</h2>
+        <form id="dynamic-form"></form>
         <button type="submit" id="submit-button">Lets Battle!</button>
     </section>
     <section class="bottom-section">
@@ -21,7 +22,8 @@ export const setupPageBasics = (parentEl) => {
             </div>
         </section>
     `;
-
+    const topSection = parentEl.querySelector('.top-section')
+    const dynamicForm = topSection.querySelector('#dynamic-form')
     const bottomSection = parentEl.querySelector('.bottom-section');
     const leftIconList = bottomSection.querySelector("ul.leftImages");
     const rightIconList = bottomSection.querySelector("ul.rightImages")
@@ -29,7 +31,7 @@ export const setupPageBasics = (parentEl) => {
     const columnRight = bottomSection.querySelector('#rightRelations')
     const leftPokePics = bottomSection.querySelector('.leftPokePics')
     const rightPokePics = bottomSection.querySelector('.rightPokePics')
-    return { columnLeft, columnRight, rightIconList, leftIconList, rightPokePics,leftPokePics};
+    return { columnLeft, columnRight, rightIconList, leftIconList, rightPokePics,leftPokePics, dynamicForm};
 }
 
 // Render icons on page load
