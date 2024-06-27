@@ -102,7 +102,8 @@ export const getTypeInfo = async (str) => {
     for(let i = 0; i < damageData.half_damage_to.length; i++) {
       halfDamTo.push(damageData.half_damage_to[i].name)
     }
-    damageObj = { doubleDamFrom, doubleDamTo, halfDamFrom, halfDamTo }
+    const RelationIcon = typeIcons[str];
+    damageObj = { doubleDamFrom, doubleDamTo, halfDamFrom, halfDamTo, icon : RelationIcon}
     return damageObj;
 
   } catch(error) {
