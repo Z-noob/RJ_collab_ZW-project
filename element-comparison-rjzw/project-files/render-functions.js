@@ -1,7 +1,7 @@
 export const setupPageBasics = (parentEl) => {
     parentEl.innerHTML = `
     <header>
-    <h1>Element Compare</h1>
+        <h1>Element Compare</h1>
     </header>
     <section class="top-section">
         <h2>Choose Two:</h2>
