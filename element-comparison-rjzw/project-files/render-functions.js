@@ -5,6 +5,7 @@ export const setupPageBasics = (parentEl) => {
     </header>
     <section class="top-section">
         <h2>Choose Two:</h2>
+        <button type="submit" id="submit-button">Lets Battle!</button>
     </section>
     <section class="bottom-section">
         <div class="column">
@@ -19,7 +20,6 @@ export const setupPageBasics = (parentEl) => {
             <div class="rightPokePics" ></div>
             </div>
         </section>
-        <button type="submit" id="submit-button">Lets Battle!</button>
     `;
 
     const bottomSection = parentEl.querySelector('.bottom-section');
