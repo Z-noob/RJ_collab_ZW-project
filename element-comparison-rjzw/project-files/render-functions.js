@@ -1,14 +1,16 @@
 export const setupPageBasics = (parentEl) => {
     parentEl.innerHTML = `
     <header>
-        <h1>Element Compare</h1>
+        <h1>Elemental PokéChart</h1>
     </header>
     <section class="top-section">
-        <h2>Choose Two:</h2>
-        <form id="dynamic-form">
-            <input type="hidden" required>
-            <button type="submit" id="submit-button">Lets Battle!</button>
-        </form>
+        <div class="topContainer">
+            <h2>Choose Two:</h2>
+            <form id="dynamic-form">
+                <input type="hidden" required>
+                <button type="submit" id="submit-button">Lets Battle!</button>
+            </form>
+        </div>
     </section>
     <section class="bottom-section">
         <div class="column">
@@ -16,7 +18,7 @@ export const setupPageBasics = (parentEl) => {
             <div id="leftRelations"></div>
             <div class="leftPokePics"></div>
         </div> 
-        <div class="column" id="comparisonIcon"></div>
+        <div class="columnMiddle" id="comparisonIcon"></div>
         <div class="column">
             <ul class="rightImages"></ul>
             <div id="rightRelations"></div>
@@ -96,8 +98,8 @@ export const renderTypeInfo = (relationsDiv, obj, str) => {
     };
     const p1 = doubleDamToStr, p2 = halfDamToStr, p3 = doubleDamFromStr, p4 = halfDamFromStr;
     relationsDiv.innerHTML = `
-    <img src="${obj.icon}" alt="${str} icon"></img>
     <p>${str}</p>
+    <img src="${obj.icon}" alt="${str} icon"></img>
     <p>Outgoing Damage -</p>
     <p>Super Effective: ${p1}</p>
     <p>Ineffective: ${p2}</p>
