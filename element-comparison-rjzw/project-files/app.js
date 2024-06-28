@@ -148,17 +148,28 @@ export default async function app(appDiv) {
         leftArray: formData.get('leftWeakTo'),
         rightArray: formData.get('rightWeakTo')
       }
+      console.log(Data);
       const { left, right, leftArray, rightArray } = Data;
     if (left && right && leftArray && rightArray) {
-        if (leftArray.includes(right) && !rightArray.includes(left)) {
-            renderResult(compareDiv, compareIcons.pointLeft);
+        if (leftArray.includes(right) && rightArray.includes(left)) {
+          const iconEl = document.createElement('img');
+          iconEl.src = 'https://www.svgrepo.com/show/19085/equals-symbol.svg'
+          renderResult(compareDiv, iconEl);
+        } else if (leftArray.includes(right) && !rightArray.includes(left)){
+          const iconEl = document.createElement('img');
+          iconEl.src = 'https://www.svgrepo.com/show/165906/left-arrow.svg'
+          renderResult(compareDiv, iconEl);
         } else if (rightArray.includes(left) && !leftArray.includes(right)) {
-            renderResult(compareDiv, compareIcons.pointRight);
+          const iconEl = document.createElement('img');
+          iconEl.src = 'https://www.svgrepo.com/show/70478/right-arrow.svg'
+          renderResult(compareDiv, iconEl);
         } else {
-            renderResult(compareDiv, compareIcons.equal);
+          const iconEl = document.createElement('img');
+          iconEl.src = 'https://www.svgrepo.com/show/19085/equals-symbol.svg'
+          renderResult(compareDiv, iconEl);
         }
-      }
-})
+    }
+  })
 
 /* //(**)
 const battle = () => {

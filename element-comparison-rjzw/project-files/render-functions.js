@@ -1,6 +1,8 @@
 export const setupPageBasics = (parentEl) => {
     parentEl.innerHTML = `
+    <header>
         <h1>Element Compare</h1>
+    </header>
     <section class="top-section">
         <h2>Choose Two:</h2>
         <form id="dynamic-form">
@@ -107,10 +109,7 @@ export const renderTypeInfo = (relationsDiv, obj, str) => {
 };
 
 //renders comparison icon
-export const renderResult = (middle, compResult) => {
-    middle.innerHTML=""
-    const iconElem = document.createElement("i")
-    const parts = compResult.split(' ');
-    iconElem.classList.add(parts[0], parts[1])
-    middle.append(iconElem)
+export const renderResult = (middle, img) => {
+    middle.innerHTML="";
+    middle.append(img);
 }
