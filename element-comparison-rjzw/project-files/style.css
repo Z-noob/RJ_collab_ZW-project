@@ -3,7 +3,8 @@
     box-sizing: border-box;
 }
 body {
-    
+    background: url("./images/PokeBackground.png");
+    /* background-size: 100%; */
     font-family: Arial, sans-serif;
     overflow-x: hidden;
     margin: 0;
@@ -39,6 +40,7 @@ header {
     border: solid #5B6DCD 1px;
 }
 .bottom-section .column {
+    background-color: blanchedalmond;
     margin: 0;
     padding: 0;
     width: 30%;
@@ -58,6 +60,18 @@ header {
     box-sizing: border;
 }
 .bottom-section .column .rightImages img {
+    width: 60px;
+    height: 60px;
+    border: solid #5B6DCD 1px;
+    box-sizing: border;
+}
+.bottom-section .column .leftPokePics img {
+    width: 60px;
+    height: 60px;
+    border: solid #5B6DCD 1px;
+    box-sizing: border;
+}
+.bottom-section .column .rightPokePics img {
     width: 60px;
     height: 60px;
     border: solid #5B6DCD 1px;
