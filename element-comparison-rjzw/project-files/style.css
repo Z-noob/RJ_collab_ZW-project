@@ -88,3 +88,46 @@ header {
     justify-content: center;
     align-items: center;
 }
+
+#submit-button {
+    padding: 10px 20px;
+    background-color: #4279c5;
+    color: white;
+    border: none;
+    border-radius: 2px;
+    cursor: pointer;
+    font-size: 10px;
+    font-family: Arial, sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: background-color 0.3s ease;
+  }
+    #submit-button:hover {
+    background-color: #1842a3;
+  }
+
+    #submit-button:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  }
+  #view {
+    padding: 5px 10px;
+    background-color: #9b9b97;
+    color: white;
+    border: none;
+    border-radius: 2px;
+    cursor: pointer;
+    font-size: 10px;
+    font-family: Arial, sans-serif;
+    text-transform: capitalize;
+    letter-spacing: 1px;
+    transition: background-color 0.3s ease;
+  }
+    #view:hover {
+    background-color: #565759;
+  }
+
+    #view:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  }
