@@ -1,8 +1,6 @@
 export const setupPageBasics = (parentEl) => {
     parentEl.innerHTML = `
-    <header>
         <h1>Element Compare</h1>
-    </header>
     <section class="top-section">
         <h2>Choose Two:</h2>
         <form id="dynamic-form">
@@ -16,7 +14,7 @@ export const setupPageBasics = (parentEl) => {
             <div id="leftRelations"></div>
             <div class="leftPokePics"></div>
         </div> 
-
+        <div class="column" id="comparisonIcon"></div>
         <div class="column">
             <ul class="rightImages"></ul>
             <div id="rightRelations"></div>
@@ -33,7 +31,10 @@ export const setupPageBasics = (parentEl) => {
     const columnRight = bottomSection.querySelector('#rightRelations')
     const leftPokePics = bottomSection.querySelector('.leftPokePics')
     const rightPokePics = bottomSection.querySelector('.rightPokePics')
-    return { columnLeft, columnRight, rightIconList, leftIconList, rightPokePics,leftPokePics, dynamicForm};
+    const compareDiv = bottomSection.querySelector('#comparisonIcon')
+
+
+    return { columnLeft, columnRight, rightIconList, leftIconList, rightPokePics,leftPokePics, dynamicForm, compareDiv };
 }
 
 // Render icons on page load
@@ -48,8 +49,9 @@ export const renderTypes = (typesDiv, arr) => {
     typesDiv.innerHTML = htmlContent;
 }
 
+// render poke img
 export const renderPokesImg = (pokeDiv, obj) => {
-    pokeDiv.innerHTML = '';
+    pokeDiv.innerHTML = "";
     const divElem = document.createElement("div")
     divElem.innerHTML = "";
 
@@ -64,8 +66,6 @@ export const renderPokesImg = (pokeDiv, obj) => {
         buttonElem.setAttribute("type", "button");
         buttonElem.setAttribute("target", "_blank");
         buttonElem.id = `${obj.names[index]}`
-        console.log(imgElem.src)
-        console.log(obj.names[index])
 
         index +=1
 
@@ -75,6 +75,7 @@ export const renderPokesImg = (pokeDiv, obj) => {
 
         pokeDiv.append(divElem)
 };
+
 
 // Render type damage relations on icon click
 export const renderTypeInfo = (relationsDiv, obj, str) => {
@@ -99,9 +100,17 @@ export const renderTypeInfo = (relationsDiv, obj, str) => {
     <p>Super Effective: ${p1}</p>
     <p>Ineffective: ${p2}</p>
     <p>Incoming Damage - </p>
-    <p>Super Effective: ${p3}</p>
+    <p id="weakness">Super Effective: ${p3}</p>
     <p>Ineffective: ${p4}</p>
     <button id="view"> View Pokemon </button>
     `;
 };
 
+//renders comparison icon
+export const renderResult = (middle, compResult) => {
+    middle.innerHTML=""
+    const iconElem = document.createElement("i")
+    const parts = compResult.split(' ');
+    iconElem.classList.add(parts[0], parts[1])
+    middle.append(iconElem)
+}

@@ -19,6 +19,12 @@ const typeIcons = {
   fairy: 'https://upload.wikimedia.org/wikipedia/commons/0/08/Pok%C3%A9mon_Fairy_Type_Icon.svg',
 };
 
+export const compareIcons = {
+  pointRight: "fa-solid fa-chevron-right",
+  pointLeft: "fa-solid fa-chevron-left",
+  equal: "fa-solid fa-equals"
+
+}
 export const getTypes = async () => {
   try {
     const response = await fetch(`https://pokeapi.co/api/v2/type/`);
@@ -87,6 +93,7 @@ export const getTypeInfo = async (str) => {
     const response = await fetch(`https://pokeapi.co/api/v2/type/${str}/`);
     if (!response.ok) throw new Error (`Failed to get types`);
     const data = await response.json();
+
     const damageData = data.damage_relations;
     let damageObj = {};
     let [doubleDamFrom, doubleDamTo, halfDamFrom, halfDamTo] = [[], [], [], []];

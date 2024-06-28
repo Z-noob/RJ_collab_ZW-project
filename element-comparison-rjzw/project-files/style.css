@@ -8,15 +8,18 @@ body {
     overflow-x: hidden;
     margin: 0;
     padding: 0;
+    border: solid #5B6DCD 1px;
 }
 header {
     text-align: center;
     padding: 20px;
     background-color: #717171;
+    border: solid #5B6DCD 1px;
 }
 .top-section {
     text-align: center;
     padding: 20px;
+    border: solid #5B6DCD 1px;
 }
 .bottom-section ul {
     /* box-sizing: border; */
@@ -25,26 +28,31 @@ header {
     grid-template-rows: repeat(3, auto);
     justify-content: center;
     gap: 10px;
+    border: solid #5B6DCD 1px;
 }
 .top-section .leftImages img {
     width: 10px;
     height: 10px;
+    border: solid #5B6DCD 1px;
 }
 .bottom-section {
     margin: 2;
     display: flex;
     justify-content: space-around;
     padding: 20px;
+    border: solid #5B6DCD 1px;
 }
 .bottom-section .column {
     margin: 0;
     padding: 0;
     width: 30%;
     text-align: center;
+    border: solid #5B6DCD 1px;
 }
 .bottom-section .column img {
     width: 100px;
     height: 100px;
+    border: solid #5B6DCD 1px;
 }
 .bottom-section .column .scrollable {
     height: 100px;

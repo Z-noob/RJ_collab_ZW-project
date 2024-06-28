@@ -1,23 +1,23 @@
 import {
-
     renderTypes,
     renderTypeInfo,
     renderPokesImg,
+    renderResult,
     setupPageBasics
   } from './render-functions.js';
   import {
     getTypes,
     getTypeInfo,
     gen4Poke,
+    compareIcons
   } from './fetch-functions.js';
 
 export default async function app(appDiv) {
-  const {columnLeft, columnRight, rightIconList, leftIconList, rightPokePics, leftPokePics, dynamicForm} = 
+  const {columnLeft, columnRight, rightIconList, leftIconList, rightPokePics, leftPokePics, dynamicForm, compareDiv } = 
   setupPageBasics(appDiv)
-
   const elemPlaceHolder = [];
-  // const sectionButton = bottomSection.querySelector("button")
-
+  // (**)active with others to hv live compare icon change without clicking submit button
+  // const currTypes = ["",""]; //(**)
 
   // ADDING POKEMON IMAGES ON 'VIEW POKEMON' CLICK
   columnLeft.addEventListener("click", (e) => {
@@ -29,7 +29,7 @@ export default async function app(appDiv) {
     }
   })
 
-  columnLeft.addEventListener("click", (e) => {
+  leftPokePics.addEventListener("click", (e) => {
     const imgButton = e.target
     if(imgButton.tagName === 'IMG' & imgButton.id !== 'view') {
       const button = imgButton.parentNode
@@ -40,6 +40,19 @@ export default async function app(appDiv) {
       window.open(urlToOpen, '_blank');
     }
   })
+
+  rightPokePics.addEventListener("click", (e) => {
+    const imgButton = e.target
+    if(imgButton.tagName === 'IMG' & imgButton.id !== 'view') {
+      const button = imgButton.parentNode
+      const poke = button.id
+      poke[0].toUpperCase()
+      const urlToOpen = `https://bulbapedia.bulbagarden.net/wiki/${poke}_(Pokémon)`;
+      // https://bulbapedia.bulbagarden.net/wiki/Charmander_(Pokémon)
+      window.open(urlToOpen, '_blank');
+    }
+  })
+
   columnRight.addEventListener("click", (e) => {
     const viewButton = e.target
     if(viewButton.tagName === 'BUTTON' && viewButton.id === 'view') {
@@ -49,20 +62,6 @@ export default async function app(appDiv) {
     }
   })
 
-  columnRight.addEventListener("click", (e) => {
-    const imgButton = e.target
-    if(imgButton.tagName === 'IMG' & imgButton.id !== 'view') {
-      const button = imgButton.parentNode
-      const poke = button.id
-      poke[0].toUpperCase()
-      const urlToOpen = `https://bulbapedia.bulbagarden.net/wiki/${poke}_(Pokémon)`;
-      // https://bulbapedia.bulbagarden.net/wiki/Charmander_(Pokémon)
-      window.open(urlToOpen, '_blank');
-    }
-  })
-
-
-
   // RENDER ICONS ON LOAD
   getTypes().then((arr) => renderTypes(rightIconList, arr))
   getTypes().then((arr) => renderTypes(leftIconList, arr))
@@ -71,16 +70,18 @@ export default async function app(appDiv) {
   // RENDER DAMAGE RELATIONS ON CLICK
   rightIconList.addEventListener("click", (e) => {
     e.preventDefault();
+    rightPokePics.innerHTML = ""
     const button = e.target;
     const name = button.dataset.iconName;
     elemPlaceHolder.pop();
     elemPlaceHolder.push(`${name}`);
     getTypeInfo(name).then((relations) => {
       renderTypeInfo(columnRight,relations,(name.toUpperCase()));
-
       // FILL FORM WITH NECESSARY DATA
       const rightVar = relations.doubleDamFrom;
       const newVar = {name : name, array : rightVar}
+      // currTypes[1] = newVar; //(**)
+      // battle();  //(**)
       let rightNameInput = dynamicForm.querySelector('input[name="rightName"]');
       let rightWeakToInput = dynamicForm.querySelector('input[name="rightWeakTo"]');
       if (!rightNameInput) {
@@ -104,16 +105,18 @@ export default async function app(appDiv) {
 
   leftIconList.addEventListener("click", (e) => {
     e.preventDefault();
+    leftPokePics.innerHTML = ""
     const button = e.target
     const name = button.dataset.iconName;
     elemPlaceHolder.pop()
     elemPlaceHolder.push(`${name}`)
     getTypeInfo(name).then((relations) => {
       renderTypeInfo(columnLeft,relations,(name.toUpperCase()))
-
       // FILL FORM WITH NECESSARY DATA
       const leftVar = relations.doubleDamFrom;
       const newVar = {name : name, array : leftVar}
+      // currTypes[0] = newVar; //(**)
+      // battle();  //(**)
       let leftNameInput = dynamicForm.querySelector('input[name="leftName"]');
       let leftWeakToInput = dynamicForm.querySelector('input[name="leftWeakTo"]');
       if (!leftNameInput) {
@@ -134,4 +137,42 @@ export default async function app(appDiv) {
       leftWeakToInput.required = true;
     });
   });
+
+  //reacts to form submit 
+  dynamicForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const formData = new FormData(dynamicForm)
+      const Data = {
+        left: formData.get('leftName'),
+        right: formData.get('rightName'),
+        leftArray: formData.get('leftWeakTo'),
+        rightArray: formData.get('rightWeakTo')
+      }
+      const { left, right, leftArray, rightArray } = Data;
+    if (left && right && leftArray && rightArray) {
+        if (leftArray.includes(right) && !rightArray.includes(left)) {
+            renderResult(compareDiv, compareIcons.pointLeft);
+        } else if (rightArray.includes(left) && !leftArray.includes(right)) {
+            renderResult(compareDiv, compareIcons.pointRight);
+        } else {
+            renderResult(compareDiv, compareIcons.equal);
+        }
+      }
+})
+
+/* //(**)
+const battle = () => {
+  if(currTypes[0] !== "" && currTypes[1] !== "") {
+    if (currTypes[0].array.includes(currTypes[1].name)) {
+       renderResult(compareDiv, compareIcons.pointLeft)
+    } else if (currTypes[1].array.includes(currTypes[0].name)) {
+       renderResult(compareDiv, compareIcons.pointRight)
+    } else if (currTypes[1].array.includes(currTypes[0].name) && currTypes[0].array.includes(currTypes[1].name)) {
+       renderResult(compareDiv, compareIcons.equal)
+    } else {
+        renderResult(compareDiv, compareIcons.equal)
+    }
+  } 
+*/ //(**)
+
 };
