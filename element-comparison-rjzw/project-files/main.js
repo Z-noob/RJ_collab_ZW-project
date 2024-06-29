@@ -8,7 +8,7 @@ import {
     getTypes,
     getTypeInfo,
     gen4Poke,
-    compareIcons
+    // compareIcons
   } from './fetch-functions.js';
 import app from './app.js'
 
