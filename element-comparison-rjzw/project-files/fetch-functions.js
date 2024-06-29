@@ -19,13 +19,14 @@ const typeIcons = {
   fairy: 'https://upload.wikimedia.org/wikipedia/commons/0/08/Pok%C3%A9mon_Fairy_Type_Icon.svg',
 };
 
-export const compareIcons = {
+const compareIcons = {
   pointRight: "fa-solid fa-chevron-right",
   pointLeft: "fa-solid fa-chevron-left",
   equal: "fa-solid fa-equals"
 
 }
-export const getTypes = async () => {
+
+const getTypes = async () => {
   try {
     const response = await fetch(`https://pokeapi.co/api/v2/type/`);
     if (!response.ok) throw new Error (`Failed to get types`);
@@ -47,10 +48,8 @@ export const getTypes = async () => {
     return null;
   };
 };
-getTypes();
 
-
-export const gen4Poke  = async(ElemPlacehold) => {
+const gen4Poke  = async(ElemPlacehold) => {
   try{
     const response = await fetch(`https://pokeapi.co/api/v2/type/${ElemPlacehold}/`);
     if (!response.ok) throw new Error (`Failed to get Pokemon sprites`);
@@ -85,10 +84,7 @@ export const gen4Poke  = async(ElemPlacehold) => {
   }
 }
 
-
-// getTypes();
-
-export const getTypeInfo = async (str) => {
+const getTypeInfo = async (str) => {
   try {
     const response = await fetch(`https://pokeapi.co/api/v2/type/${str}/`);
     if (!response.ok) throw new Error (`Failed to get types`);
@@ -118,4 +114,10 @@ export const getTypeInfo = async (str) => {
     return null
   }
 }
-getTypeInfo("fire");
+
+export{
+  getTypes,
+  getTypeInfo,
+  gen4Poke
+  // compareIcons
+}

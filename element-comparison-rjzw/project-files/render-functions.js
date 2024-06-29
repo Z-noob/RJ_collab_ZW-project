@@ -1,4 +1,4 @@
-export const setupPageBasics = (parentEl) => {
+const setupPageBasics = (parentEl) => {
     parentEl.innerHTML = `
     <header>
         <h1>Elemental PokéChart</h1>
@@ -42,7 +42,7 @@ export const setupPageBasics = (parentEl) => {
 }
 
 // Render icons on page load
-export const renderTypes = (typesDiv, arr) => {
+const renderTypes = (typesDiv, arr) => {
     let htmlContent = ''
     for (const type of arr){
         htmlContent += `
@@ -54,7 +54,7 @@ export const renderTypes = (typesDiv, arr) => {
 }
 
 // render poke img
-export const renderPokesImg = (pokeDiv, obj) => {
+const renderPokesImg = (pokeDiv, obj) => {
     pokeDiv.innerHTML = "";
     const divElem = document.createElement("div")
     divElem.innerHTML = "";
@@ -82,7 +82,7 @@ export const renderPokesImg = (pokeDiv, obj) => {
 
 
 // Render type damage relations on icon click
-export const renderTypeInfo = (relationsDiv, obj, str) => {
+const renderTypeInfo = (relationsDiv, obj, str) => {
     relationsDiv.innerHTML = "";
     let doubleDamFromStr = '', doubleDamToStr = '', halfDamToStr = '', halfDamFromStr = '';
     for(const key in obj){
@@ -111,7 +111,15 @@ export const renderTypeInfo = (relationsDiv, obj, str) => {
 };
 
 //renders comparison icon
-export const renderResult = (middle, img) => {
+const renderResult = (middle, img) => {
     middle.innerHTML="";
     middle.append(img);
+}
+
+export {
+    renderTypes,
+    renderTypeInfo,
+    renderPokesImg,
+    renderResult,
+    setupPageBasics
 }

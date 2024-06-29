@@ -1,4 +1,4 @@
-import './style.css'
+// import './style.css'
 import {
     renderTypes,
     renderTypeInfo,
@@ -10,7 +10,7 @@ import {
     gen4Poke,
     compareIcons
   } from './fetch-functions.js';
-import app from './app'
+import app from './app.js'
 
 const appDiv = document.querySelector('#app');
 

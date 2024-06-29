@@ -5,11 +5,11 @@ import {
     renderResult,
     setupPageBasics
   } from './render-functions.js';
-  import {
+import {
     getTypes,
     getTypeInfo,
-    gen4Poke,
-    compareIcons
+    gen4Poke
+    // compareIcons
   } from './fetch-functions.js';
 
 export default async function app(appDiv) {
