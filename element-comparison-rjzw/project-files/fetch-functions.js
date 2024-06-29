@@ -19,12 +19,12 @@ const typeIcons = {
   fairy: 'https://upload.wikimedia.org/wikipedia/commons/0/08/Pok%C3%A9mon_Fairy_Type_Icon.svg',
 };
 
-const compareIcons = {
-  pointRight: "fa-solid fa-chevron-right",
-  pointLeft: "fa-solid fa-chevron-left",
-  equal: "fa-solid fa-equals"
+// const compareIcons = {
+//   pointRight: "fa-solid fa-chevron-right",
+//   pointLeft: "fa-solid fa-chevron-left",
+//   equal: "fa-solid fa-equals"
 
-}
+// }
 
 const getTypes = async () => {
   try {
